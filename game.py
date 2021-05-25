@@ -33,21 +33,23 @@ while (jogar_novamente != 'n'):
 
 	numero_secreto = rd.randrange(minimo, maximo, 1)
 
+	print("*** \nTente advinhar número que eu escolhi entre {} e {}.***\n".format(minimo, maximo))
+	print(f"----- Você tem {chances} chances. ---- \n")
+
 
 	while (chances > tentativas):
 
-		chute = int(input("Digite o número que achas que eu escolhi entre {} e {}: ".format(minimo, maximo)))
+		chute = int(input("Tentativa #{}: ".format(tentativas+1)))
 		
-		
-		if chute == numero_secreto:
-			print("Parabéns! Você acertou o número que eu escolhi! ", numero_secreto)
-			break
-
-		else:
-			print("Você errou! Mais sorte na próxima!")
+		if chute != numero_secreto:
 			tentativas += 1
 
+		else:
+			break
+			print("Parabéns! Você ganhou! O número era ", numero_secreto)
 
+		if(tentativas == chances):
+			print("Você perdeu!")
 
 
 	jogar_novamente = input("Deseja jogar novamente (s/n)? ")
